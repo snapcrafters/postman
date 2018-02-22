@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Postman
+Icon=/resources/app/assets/icon.png
+Exec=Postman
+Categories=Development;
+Terminal=false
