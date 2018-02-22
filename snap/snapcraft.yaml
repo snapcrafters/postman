@@ -52,6 +52,11 @@ parts:
      - libxcb-render0
      - libxcb-shm0
      - libxcb1
+     - libatomic1
+     - libc++1
+     - libnotify4
+     - libpulse0
+    after: [desktop-gtk3]
   desktop:
     after:
      - postman
@@ -64,6 +69,6 @@ parts:
  
 apps:
   postman:
-    command: Postman
+    command: desktop-launch Postman
     desktop: postman.desktop
-    plugs: [home, network, x11, wayland, hardware-observe, time-control, desktop, desktop-legacy, unity7, gsettings]
+    plugs: [home, network, x11, wayland, hardware-observe, opengl, time-control, desktop, desktop-legacy, unity7, gsettings, browser-support, screen-inhibit-control]
