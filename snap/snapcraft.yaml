@@ -1,9 +1,9 @@
 name: postman
 version: 5.5.3
 grade: devel
-summary: postman
+summary: API Development Environment
 description: |
-  API development
+  Postman is the complete toolchain for API developers, used by more than 3 million developers and 30000 companies worldwide. Postman makes working with APIs faster and easier by supporting developers at every stage of their workflow, and is available for Mac OS X, Windows, Linux and Chrome users.
  
 confinement: devmode
  
