@@ -69,6 +69,6 @@ parts:
  
 apps:
   postman:
-    command: desktop-launch Postman
+    command: bin/desktop-launch $SNAP/Postman
     desktop: postman.desktop
     plugs: [home, network, x11, wayland, hardware-observe, opengl, time-control, desktop, desktop-legacy, unity7, gsettings, browser-support, screen-inhibit-control]
