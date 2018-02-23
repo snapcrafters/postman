@@ -5,70 +5,43 @@ summary: API Development Environment
 description: |
   Postman is the complete toolchain for API developers, used by more than 3 million developers and 30000 companies worldwide. Postman makes working with APIs faster and easier by supporting developers at every stage of their workflow, and is available for Mac OS X, Windows, Linux and Chrome users.
  
-confinement: devmode
+confinement: strict
  
 parts:
   postman:
+    after: [desktop-gtk2]
     plugin: dump
     source-type: tar
     source: https://dl.pstmn.io/download/latest/linux64
+    install: |
+     mkdir $SNAPCRAFT_PART_INSTALL/usr/share/Postman
+     mv * $SNAPCRAFT_PART_INSTALL/usr/share/Postman
+    stage:
+     - usr/*
     stage-packages:
-     - libx11-xcb1
-     - libx11-6
-     - libxau6
-     - libxcomposite1
-     - libxcursor1
-     - libxdamage1
-     - libxdmcp6
-     - libxext6
-     - libxfixes3
-     - libxi6
-     - libxinerama1
-     - libxrandr2
-     - libxrender1
-     - libxss1
-     - libxtst6
-     - libasound2
-     - libatk1.0-0
-     - libavahi-client3
-     - libavahi-common3
-     - libcairo2
-     - libcups2
-     - libdatrie1
-     - libdbus-glib-1-2
-     - libfontconfig1
-     - libgconf-2-4
-     - libgtk2.0-0
-     - libgdk-pixbuf2.0-0
-     - libgraphite2-3
-     - libharfbuzz0b
-     - libnspr4
-     - libnss3
-     - libpango-1.0-0
-     - libpangocairo-1.0-0
-     - libpangoft2-1.0-0
-     - libpixman-1-0
-     - libthai0
-     - libxcb-render0
-     - libxcb-shm0
-     - libxcb1
-     - libatomic1
-     - libc++1
-     - libnotify4
-     - libpulse0
-    after: [desktop-gtk2]
+      - libasound2
+      - libatomic1
+      - libc++1
+      - libgconf2-4
+      - libnotify4
+      - libnspr4
+      - libnss3
+      - libpulse0
+      - libxss1
+      - libxtst6
+
   desktop:
-    after:
-     - postman
+    after: [postman]
     plugin: dump
     source: .
+    install: |
+     mkdir $SNAPCRAFT_PART_INSTALL/usr $SNAPCRAFT_PART_INSTALL/usr/share $SNAPCRAFT_PART_INSTALL/usr/share/applications
+     mv postman.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications
     stage:
-     - postman.desktop
-    prime:
-     - postman.desktop
+     - usr/share/applications/postman.desktop
  
 apps:
   postman:
-    command: bin/desktop-launch $SNAP/Postman
-    desktop: postman.desktop
-    plugs: [home, network, x11, wayland, hardware-observe, opengl, time-control, desktop, desktop-legacy, unity7, gsettings, browser-support, screen-inhibit-control]
+    command: bin/desktop-launch $SNAP/usr/share/Postman/Postman
+    desktop: usr/share/applications/postman.desktop
+    plugs: [home, network, network-observe, x11, wayland, opengl, desktop, desktop-legacy, unity7, gsettings, browser-support]
