@@ -29,6 +29,7 @@ parts:
       - libpulse0
       - libxss1
       - libxtst6
+      - libdb5.3
 
   desktop:
     after: [postman]
