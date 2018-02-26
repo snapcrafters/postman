@@ -1,5 +1,5 @@
 name: postman
-version: 5.5.3
+version: 6.0.8
 grade: devel
 summary: API Development Environment
 description: |
@@ -9,7 +9,7 @@ confinement: strict
  
 parts:
   postman:
-    after: [desktop-gtk2]
+    after: [desktop-gtk3]
     plugin: dump
     source-type: tar
     source: https://dl.pstmn.io/download/latest/linux64
