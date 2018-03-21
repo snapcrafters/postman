@@ -13,9 +13,12 @@ parts:
     plugin: dump
     source-type: tar
     source: https://dl.pstmn.io/download/latest/linux64
+    build-packages:
+     - execstack
     install: |
      mkdir $SNAPCRAFT_PART_INSTALL/usr/share/Postman
      mv * $SNAPCRAFT_PART_INSTALL/usr/share/Postman
+     execstack --clear-execstack $SNAPCRAFT_PART_INSTALL/usr/share/Postman/Postman
     stage:
      - usr/*
     stage-packages:
