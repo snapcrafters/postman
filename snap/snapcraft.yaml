@@ -10,7 +10,7 @@ confinement: strict
  
 parts:
   postman:
-    after: [desktop-gtk3]
+    after: [desktop-gtk2]
     plugin: dump
     source-type: tar
     source: https://dl.pstmn.io/download/latest/linux64
@@ -22,7 +22,7 @@ parts:
      mkdir $SNAPCRAFT_PART_INSTALL/usr/share/Postman
      mv * $SNAPCRAFT_PART_INSTALL/usr/share/Postman
      execstack --clear-execstack $SNAPCRAFT_PART_INSTALL/usr/share/Postman/Postman
-     VERSION=$(curl "https://dl.pstmn.io/changelog?channel=stable&platform=linux" | jshon -e changelog -e 0 -e name | sed 's/\"//g')
+     VERSION=$(cat $SNAPCRAFT_PART_INSTALL/usr/share/Postman/resources/app/package.json | jshon -e version | sed 's/\"//g')
      echo $VERSION > $SNAPCRAFT_STAGE/version
     stage:
      - usr/*
