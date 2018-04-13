@@ -1,4 +1,4 @@
-name: postman
+name: postman-unofficial
 version: latest
 version-script: cat $SNAPCRAFT_STAGE/version
 summary: API Development Environment
