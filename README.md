@@ -15,7 +15,7 @@ distributions.</p>
 
 ## Install
 
-    sudo snap install postman-unofficial --beta
+    sudo snap install postman
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
 
