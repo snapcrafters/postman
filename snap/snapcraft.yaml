@@ -17,9 +17,9 @@ parts:
     build-packages:
      - execstack
      - jshon
-    install: |
+    override-build: |
      mkdir $SNAPCRAFT_PART_INSTALL/usr/share/Postman
-     mv * $SNAPCRAFT_PART_INSTALL/usr/share/Postman
+     mv app/* $SNAPCRAFT_PART_INSTALL/usr/share/Postman
      execstack --clear-execstack $SNAPCRAFT_PART_INSTALL/usr/share/Postman/Postman
      VERSION=$(cat $SNAPCRAFT_PART_INSTALL/usr/share/Postman/resources/app/package.json | jshon -e version | sed 's/\"//g')
      echo $VERSION > $SNAPCRAFT_STAGE/version
@@ -42,7 +42,7 @@ parts:
     after: [postman]
     plugin: dump
     source: .
-    install: |
+    override-build: |
      mkdir $SNAPCRAFT_PART_INSTALL/usr $SNAPCRAFT_PART_INSTALL/usr/share $SNAPCRAFT_PART_INSTALL/usr/share/applications
      mv postman.desktop $SNAPCRAFT_PART_INSTALL/usr/share/applications
     stage:
