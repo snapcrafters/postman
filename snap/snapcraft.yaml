@@ -15,12 +15,10 @@ parts:
     source-type: tar
     source: https://dl.pstmn.io/download/latest/linux64
     build-packages:
-     - execstack
      - jshon
     override-build: |
      mkdir $SNAPCRAFT_PART_INSTALL/usr/share/Postman
      mv app/* $SNAPCRAFT_PART_INSTALL/usr/share/Postman
-     execstack --clear-execstack $SNAPCRAFT_PART_INSTALL/usr/share/Postman/Postman
      VERSION=$(cat $SNAPCRAFT_PART_INSTALL/usr/share/Postman/resources/app/package.json | jshon -e version | sed 's/\"//g')
      echo $VERSION > $SNAPCRAFT_STAGE/version
     stage:
