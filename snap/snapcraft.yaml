@@ -13,7 +13,11 @@ parts:
     after: [desktop-gtk2]
     plugin: dump
     source-type: tar
-    source: https://dl.pstmn.io/download/latest/linux64
+    source: 
+      - on amd64: https://dl.pstmn.io/download/latest/linux64
+      - on i386: fail
+      - on armhf: fail
+      - on arm64: fail
     build-packages:
      - jshon
     override-build: |
