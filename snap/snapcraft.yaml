@@ -15,7 +15,7 @@ parts:
     source-type: tar
     source: 
       - on amd64: https://dl.pstmn.io/download/latest/linux64
-      - on i386: fail
+      - on i386: https://dl.pstmn.io/download/latest/linux32
       - on armhf: fail
       - on arm64: fail
     build-packages:
