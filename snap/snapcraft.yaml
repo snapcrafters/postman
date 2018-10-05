@@ -8,6 +8,10 @@ description: |
 grade: stable
 confinement: strict
  
+ architectures:
+   - build-on: amd64
+   - build-on: i386
+ 
 parts:
   postman:
     after: [desktop-gtk2]
@@ -16,8 +20,6 @@ parts:
     source: 
       - on amd64: https://dl.pstmn.io/download/latest/linux64
       - on i386: https://dl.pstmn.io/download/latest/linux32
-      - on armhf: fail
-      - on arm64: fail
     build-packages:
      - jshon
     override-build: |
