@@ -29,6 +29,7 @@ parts:
     override-build: |
      mkdir $SNAPCRAFT_PART_INSTALL/usr/share/Postman
      mv app/* $SNAPCRAFT_PART_INSTALL/usr/share/Postman
+     rm "$SNAPCRAFT_PART_INSTALL/usr/share/Postman/resources/app/node_modules/@postman-app/logger/node_modules/colors/lib/.colors.js.swp"
      VERSION=$(cat $SNAPCRAFT_PART_INSTALL/usr/share/Postman/resources/app/package.json | jshon -e version | sed 's/\"//g')
      echo $VERSION > $SNAPCRAFT_STAGE/version
     stage:
