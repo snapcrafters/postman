@@ -1,9 +1,8 @@
 name: postman
-version: latest
-version-script: cat $SNAPCRAFT_STAGE/version
 summary: API Development Environment
 description: |
   Postman is the complete toolchain for API developers, used by more than 3 million developers and 30000 companies worldwide. Postman makes working with APIs faster and easier by supporting developers at every stage of their workflow, and is available for Mac OS X, Windows, Linux and Chrome users.
+adopt-info: postman
 
 grade: stable
 confinement: strict
@@ -31,7 +30,7 @@ parts:
      mv app/* $SNAPCRAFT_PART_INSTALL/usr/share/Postman
      rm "$SNAPCRAFT_PART_INSTALL/usr/share/Postman/resources/app/node_modules/@postman-app/logger/node_modules/colors/lib/.colors.js.swp"
      VERSION=$(cat $SNAPCRAFT_PART_INSTALL/usr/share/Postman/resources/app/package.json | jshon -e version | sed 's/\"//g')
-     echo $VERSION > $SNAPCRAFT_STAGE/version
+     snapcraftctl set-version "$(ecoh $VERSION)"
     stage:
      - usr/*
     stage-packages:
